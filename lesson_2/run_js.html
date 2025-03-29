@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>your page title goes here</title>
+    <meta charset="utf-8">
+    <script src="https://dbdwvr6p7sskw.cloudfront.net/210/files/email_data_v2.js"></script>
+    <script>
+      function mailCount(emailData) {
+        emails = emailData.split(/##\|\|##\n\n/);
+        const count = emails.length;
+        const dateStrings = emailData.match(/(\d{2}-){2}\d{4}/g);
+        const sortedDates = dateStrings.map(date => new Date(date))
+                                       .sort((a, b) => a - b);
+        const start = `${sortedDates[0].toDateString()}`;
+        const end = `${sortedDates[sortedDates.length - 1].toDateString()}`;
+        
+        console.log(`Count of Email: ${count}`);
+        console.log(`Date Range: ${start} - ${end}`);
+      }
+
+      mailCount(emailData);
+
+      // console output
+
+      // Count of Email: 5
+      // Date Range: Sat Jun 25 2016 - Thu Aug 11 2016
+    </script>
+  </head>
+  <body>
+    
+  </body>
+</html>
